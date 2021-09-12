@@ -1,0 +1,18 @@
+1. SELECT DISTINCT multiplier FROM users ORDER BY multiplier DESC;
+2. SELECT id , influence_count FROM users ORDER BY influence_count;
+3. SELECT DISTINCT member_since FROM users ORDER BY member_since;
+4. SELECT name, email, member_since FROM users WHERE member_since = '2020-07-01';
+5. SELECT name, email, member_since FROM users WHERE member_since < '2020-07-01';
+6. SELECT name, email, member_since FROM users WHERE member_since BETWEEN '2020-07-31' AND '2020-08-15';
+7. SELECT name, email, member_since FROM users WHERE influence_count >= '750000';
+8. SELECT name, email, member_since FROM users WHERE member_since BETWEEN '2020-07-31' AND '2020-08-15' AND influence_count >= '750000';
+9. SELECT id, email from users WHERE email like '%com';
+10. SELECT id, email from users WHERE email like '%djangoproject%';
+11. SELECT name,email FROM users where influence_count = (SELECT MAX(influence_count) from users);
+12. SELECT name,email FROM users ORDER BY member_since DESC LIMIT 5;
+13. SELECT COUNT(*) from users;
+14. SELECT COUNT(DISTINCT multiplier) from users;
+15. SELECT name FROM users WHERE influence_count IN (SELECT MAX(influence_count) FROM users GROUP BY multiplier);
+16. Same
+17. SELECT multiplier AS multiplier_group ,COUNT(*) AS number_of_users_joined_after_april from users WHERE member_since >= '2020-05-01' GROUP BY multiplier;
+18. SELECT name,influence_count FROM users where influence_count>='700000' AND multiplier%2=0  ORDER BY name desc;

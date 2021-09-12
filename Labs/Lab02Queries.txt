@@ -1,0 +1,5 @@
+1. alter table users change member_id id int;
+2.  SELECT id, name, email, member_since from users;
+3.  SELECT name, email from users;
+4. SELECT name, email, member_since, ( 1 - (multiplier * influence_count / 20000000)) FROM users;
+5. SELECT name, email, member_since, ( 1 - (multiplier * influence_count / 20000000)) as ranking FROM users;

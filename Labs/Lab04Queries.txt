@@ -1,0 +1,25 @@
+ME
+1. SELECT employee_id, last_name, email, salary, department_id FROM homework4 WHERE salary = (SELECT MAX(salary) from homework4);
+2. SELECT employee_id, last_name, email, commission_pct, department_id FROM homework4 WHERE commission_pct IN (SELECT MAX(commission_pct) from homework4 GROUP BY department_id);
+3. SELECT employee_id, last_name, email, commission_pct, department_id FROM homework4 WHERE commission_pct IN (SELECT MIN(commission_pct) from homework4 ORDER BY department_id);
+4. SELECT employee_id, last_name, email, commission_pct, department_id FROM homework4 WHERE department_id = '5' AND commission_pct > ANY (SELECT commission_pct FROM homework4 WHERE department_id = '7');
+5. SELECT employee_id, last_name, email, salary, department_id FROM homework4 WHERE department_id = '5' AND salary > ANY (SELECT salary FROM homework4 WHERE department_id = '7');
+6. SELECT department_id,job_id,salary FROM homework4 H1 WHERE EXISTS(SELECT department_id FROM homework4 H2 WHERE H1.department_id = H2.department_id AND H1.salary < H2.salary) GROUP BY department_id;
+7. SELECT DISTINCT manager_id FROM homework4 H1 WHERE EXISTS (SELECT * FROM homework4 H2 WHERE H1.salary < 2500);
+8. SELECT DISTINCT manager_id FROM homework4 H1 WHERE EXISTS (SELECT * FROM homework4 H2 WHERE H1.commission_pct < 18.25);
+9. SELECT DISTINCT manager_id from homework4 H1 WHERE not exists SELECT * from homework4 H2 where H1.manager_id = H2.manager_id AND H2.salary < 3500);
+10. SELECT DISTINCT manager_id from homework4 H1 WHERE not exists (SELECT * from homework4 H2 where H1.manager_id = H2.manager_id AND H2.commission_pct < 45.05);
+
+
+
+
+ADI
+1. select employee_id, last_name, email, salary, department_id from employees where salary in (select max(salary) from employees group by department_id);
+2. select employee_id, last_name, email, commission_pct, department_id from employees where commission_pct in (select max(commission_pct) from employees group by department_id);
+3. select employee_id, last_name, email, commission_pct, department_id from employees where commission_pct in (select min(commission_pct) from employees group by department_id);
+4. select employee_id, last_name, email, commission_pct, department_id from employees where department_id = 5 and commission_pct > any (select commission_pct from employees where department_id = 7);
+5. select employee_id, last_name, email, salary, department_id from employees where department_id = 5 and salary > any (select salary from employees where department_id = 7);
+7. select manager_id from employees e1 where exists(select * from employees e2 where e1.manager_id != e2.manager_id and e2.salary < 2500);
+8.  select manager_id from employees e1 where exists(select * from employees e2 where e1.manager_id = e2.manager_id and e2.commission_pct < 18.25);
+9. select manager_id from employees e1 where not exists(select * from employees e2 where e1.manager_id = e2.manager_id and e2.salary < 3500);
+10. select manager_id from employees e1 where not exists(select * from employees e2 where e1.manager_id = e2.manager_id and e2.commission_pct < 45.05);
